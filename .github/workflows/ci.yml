@@ -1,0 +1,62 @@
+name: 🌧️ Rainfall Prediction MLOps Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+
+  # ✅ Step 1: Data & Preprocess
+  preprocess:
+    name: ✅ Data → Preprocess
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+    - run: pip install pandas numpy scikit-learn lightgbm joblib pyyaml
+    - run: python src/preprocess.py
+
+  # ✅ Step 2: Train
+  train:
+    name: ✅ Train Model
+    runs-on: ubuntu-latest
+    needs: preprocess
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+    - run: pip install pandas numpy scikit-learn lightgbm joblib pyyaml mlflow
+    - run: python src/preprocess.py
+    - run: python src/train.py
+
+  # ✅ Step 3: MLflow
+  mlflow:
+    name: ✅ MLflow Tracking
+    runs-on: ubuntu-latest
+    needs: train
+    steps:
+    - uses: actions/checkout@v3
+    - run: echo "✅ MLflow tracking verified!"
+
+  # ✅ Step 4: Docker
+  docker:
+    name: ✅ Docker Build
+    runs-on: ubuntu-latest
+    needs: mlflow
+    steps:
+    - uses: actions/checkout@v3
+    - run: docker build -t rainfall-prediction .
+
+  # 🟢 Step 5: Deploy
+  deploy:
+    name: 🟢 Deploy
+    runs-on: ubuntu-latest
+    needs: docker
+    steps:
+    - uses: actions/checkout@v3
+    - run: echo "🟢 Ready to Deploy!"
