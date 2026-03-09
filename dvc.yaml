@@ -1,0 +1,23 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - src/preprocess.py
+      - data/raw/weatherAUS.csv
+    outs:
+      - data/processed/cleaned_data.csv
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/processed/cleaned_data.csv
+      - params.yaml
+    outs:
+      - models/rainfall_model.pkl
+
+  predict:
+    cmd: python src/predict.py
+    deps:
+      - src/predict.py
+      - models/rainfall_model.pkl
