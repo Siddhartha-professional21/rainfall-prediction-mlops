@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/SIDDHARTHA/OneDrive/Desktop/rainfall-prediction/mlruns/241328223529682342/5bbdc819b4da4de3a916ce97c19b3566/artifacts
+end_time: 1773043833154
+entry_point_name: ''
+experiment_id: '241328223529682342'
+lifecycle_stage: active
+run_id: 5bbdc819b4da4de3a916ce97c19b3566
+run_name: dazzling-swan-15
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773043824217
+status: 3
+tags: []
+user_id: SIDDHARTHA

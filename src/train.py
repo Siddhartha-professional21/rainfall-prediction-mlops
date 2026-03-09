@@ -63,6 +63,7 @@ model = lgb.LGBMClassifier(
 # STEP 6: MLflow — tracks everything automatically
 # Like a lab notebook that records all experiments
 # ─────────────────────────────────────────
+mlflow.set_tracking_uri("mlruns")
 mlflow.set_experiment("rainfall-prediction")  # name of our experiment
 
 with mlflow.start_run():  # start recording

@@ -16,3 +16,34 @@ stages:
       hash: md5
       md5: c5543e46e52bba0c3a2878d28c8566a7
       size: 17843025
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/cleaned_data.csv
+      hash: md5
+      md5: c5543e46e52bba0c3a2878d28c8566a7
+      size: 17843025
+    - path: params.yaml
+      hash: md5
+      md5: c6ea60a7d1c7503f5e722ccff6fddb48
+      size: 184
+    - path: src/train.py
+      hash: md5
+      md5: d04276d9b642d8dae76ef8d2b5a0940e
+      size: 4851
+    outs:
+    - path: models/rainfall_model.pkl
+      hash: md5
+      md5: 6db8685df975191a76f752551ff47434
+      size: 349332
+  predict:
+    cmd: python src/predict.py
+    deps:
+    - path: models/rainfall_model.pkl
+      hash: md5
+      md5: 6db8685df975191a76f752551ff47434
+      size: 349332
+    - path: src/predict.py
+      hash: md5
+      md5: 88114bf5559e6f18558d2592a87a95ac
+      size: 3630

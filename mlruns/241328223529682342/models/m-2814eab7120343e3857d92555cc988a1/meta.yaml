@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/SIDDHARTHA/OneDrive/Desktop/rainfall-prediction/mlruns/241328223529682342/models/m-2814eab7120343e3857d92555cc988a1/artifacts
+creation_timestamp: 1773043826759
+experiment_id: '241328223529682342'
+last_updated_timestamp: 1773043833139
+model_id: m-2814eab7120343e3857d92555cc988a1
+model_type: null
+name: model
+source_run_id: 5bbdc819b4da4de3a916ce97c19b3566
+status: 2
+status_message: null
